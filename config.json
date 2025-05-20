@@ -1,0 +1,8 @@
+{
+  "knock_sequence": [1111, 1111, 2222, 2222, 3333, 3333],
+  "open_port": 22,
+  "access_duration": 120,
+  "max_failed_attempts": 3,
+  "ban_duration_minutes": 10
+}
+

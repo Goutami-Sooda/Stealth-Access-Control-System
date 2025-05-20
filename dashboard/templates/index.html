@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stealth Access Dashboard</title>
+</head>
+<body>
+    <h1>Stealth Access Logs</h1>
+
+    <form method="POST" action="/ban">
+        <input type="text" name="ip" placeholder="IP to Ban" required>
+        <button type="submit">Ban IP</button>
+    </form>
+
+    <form method="POST" action="/unban">
+        <input type="text" name="ip" placeholder="IP to Unban" required>
+        <button type="submit">Unban IP</button>
+    </form>
+
+    <hr>
+
+    <h2>Access Log</h2>
+    <pre>{{ access_logs|join('') }}</pre>
+
+    <h2>Banned IPs</h2>
+    <pre>{{ banned_logs|join('') }}</pre>
+</body>
+</html>
+
