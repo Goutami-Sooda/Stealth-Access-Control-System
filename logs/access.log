@@ -1,0 +1,4 @@
+[2025-06-08 15:08:55.939228] 127.0.0.1 => Correct knock sequence
+[2025-06-08 18:04:45.170146] 127.0.0.1 => Correct knock sequence
+[2025-06-08 18:08:21.329430] 127.0.0.1 => Knock failed at port 22 | Attempt 1
+[2025-06-08 18:08:21.358213] 127.0.0.1 => Knock failed at port 22 | Attempt 2

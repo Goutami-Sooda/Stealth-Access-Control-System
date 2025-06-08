@@ -1,4 +1,4 @@
-# tls_client.py (modified)
+# tls_client.py
 import ssl
 import socket
 import hashlib
