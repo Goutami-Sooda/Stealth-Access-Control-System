@@ -11,6 +11,7 @@ with open("config.json") as f:
 
 OPEN_PORT = config["open_port"]
 ACCESS_DURATION = config["access_duration"]
+TLS_ACCESS_DURATION = 90
 TLS_PORT = 443
 
 def allow_access(ip):

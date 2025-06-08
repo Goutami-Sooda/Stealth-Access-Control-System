@@ -8,7 +8,7 @@ from datetime import datetime
 from utils.logger import log_ban, log_access
 
 WHITELIST_PATH = "tls_whitelist.json"
-MONITOR_DURATION = 30  # seconds after granting access
+MONITOR_DURATION = 60  # seconds after granting access
 TLS_PORT = 443
 
 # Load whitelist

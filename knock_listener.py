@@ -7,13 +7,16 @@ from utils.firewall import ban_ip, unban_ip
 from datetime import datetime
 from utils.logger import log_ban, log_access
 import threading
-from utils.firewall import initialize_firewall
-
-initialize_firewall()
+from utils.firewall import block_ports_globally, register_cleanup
+	
 
 # Load config
 with open("config.json") as f:
     config = json.load(f)
+   
+# Block ports 22 and 443 until correct knock + TLS
+block_ports_globally()
+register_cleanup()
 
 KNOCK_SEQUENCE = config["knock_sequence"]
 MAX_FAILED_ATTEMPTS = config["max_failed_attempts"]
