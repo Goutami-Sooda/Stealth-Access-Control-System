@@ -25,6 +25,12 @@ def allow_access(ip):
 def verify_tls_fingerprint(ip):
     print(f"[+] Allowing TLS port 443 access to {ip} for {TLS_ACCESS_DURATION} seconds")
     subprocess.call(f"sudo iptables -I INPUT -p tcp --dport {TLS_PORT} -s {ip} -j ACCEPT", shell=True)
+    
+    print("[*] Starting TLS server...")
+    subprocess.Popen(["sudo", "python3", "tls_utils/tls_server.py"])
+    #subprocess.call(f"sudo python3 tls_utils/tls_server.py", shell=True)
+
+    time.sleep(3)  # Give the server time to bind to port 443
 
     result = monitor_tls(ip)
 

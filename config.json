@@ -3,6 +3,6 @@
   "open_port": 22,
   "access_duration": 120,
   "max_failed_attempts": 3,
-  "ban_duration_minutes": 10
+  "ban_duration_minutes": 2
 }
 

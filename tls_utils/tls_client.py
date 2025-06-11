@@ -1,25 +1,16 @@
-# tls_client.py
 import ssl
 import socket
-import hashlib
 
-def get_tls_fingerprint(host, port=443):
-    # Create an unverified SSL context for demo/testing
-    context = ssl._create_unverified_context()
+CLIENT_CERT = "certs/client_cert.pem"
+CLIENT_KEY = "certs/client_key.pem"
+CA_CERT = "certs/ca_cert.pem"
 
-    with socket.create_connection((host, port)) as sock:
-        with context.wrap_socket(sock, server_hostname=host) as ssock:
-            cert_bin = ssock.getpeercert(binary_form=True)
-            tls_version = ssock.version()
-            cipher = ssock.cipher()
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=CA_CERT)
+context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
 
-            fingerprint = hashlib.sha256(cert_bin).hexdigest()
-
-            print(f"🔒 TLS Version: {tls_version}")
-            print(f"🔐 Cipher: {cipher}")
-            print(f"🧬 Fingerprint (SHA256): {fingerprint}")
-            return fingerprint
-
-if __name__ == "__main__":
-    get_tls_fingerprint("localhost", 443)
+with socket.create_connection(("localhost", 443)) as sock:
+    with context.wrap_socket(sock, server_hostname="localhost") as ssock:
+        print("🔐 Connected to server using mTLS")
+        print(f"TLS Version: {ssock.version()}")
+        print(f"Cipher: {ssock.cipher()}")
 

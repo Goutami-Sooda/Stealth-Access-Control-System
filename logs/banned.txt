@@ -11,3 +11,9 @@
 [2025-06-08 19:27:42.422198] 127.0.0.1 => BANNED - Too many failed knocks (3)
 [2025-06-08 22:29:03.496009] 127.0.0.1 => BANNED - Too many failed knocks (3)
 [2025-06-08 22:38:26.748884] 127.0.0.1 => BANNED - Too many failed knocks (3)
+[2025-06-11 09:51:03.875512] 127.0.0.1 => BANNED - Too many failed knocks (3)
+[2025-06-11 17:49:37.778851] 127.0.0.1 => BANNED - TLS fingerprint mismatch
+[2025-06-11 17:49:38.662714] 127.0.0.1 => BANNED - Too many failed knocks (3)
+[2025-06-11 17:52:36.594260] 127.0.0.1 => BANNED - Too many failed knocks (3)
+[2025-06-11 17:58:37.320659] 127.0.0.1 => BANNED - Too many failed knocks (3)
+[2025-06-11 18:27:50.080130] 127.0.0.1 => BANNED - Too many failed knocks (3)

@@ -87,6 +87,7 @@ def process_packet(packet):
         if failed_attempts[src_ip] >= MAX_FAILED_ATTEMPTS:
             ban_ip(src_ip)
             banned_ips[src_ip] = time.time()
+            print(f"[BANNED] Too many failed knocks ({MAX_FAILED_ATTEMPTS}) from {src_ip}")
             log_ban(src_ip, f"BANNED - Too many failed knocks ({MAX_FAILED_ATTEMPTS})")
         else:
             log_access(src_ip, f"Knock failed at port {dst_port} | Attempt {failed_attempts[src_ip]}")
