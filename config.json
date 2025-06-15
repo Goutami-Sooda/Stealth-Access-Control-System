@@ -2,7 +2,7 @@
   "knock_sequence": [53842, 49123, 61432, 55021, 52375],
   "open_port": 22,
   "access_duration": 120,
-  "max_failed_attempts": 3,
+  "max_failed_attempts": 4,
   "ban_duration_minutes": 0.5
 }
 

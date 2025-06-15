@@ -194,3 +194,14 @@
 [2025-06-15 22:38:17.631626] 127.0.0.1 => Correct knock sequence
 [2025-06-15 22:38:20.714592] 127.0.0.1 => TLS SUCCESS - Client cert matched | SHA256: 77d47075db6cccc9ce9d65f7339093845ce25c5a772c1806fd2253c697a5d2d9
 [2025-06-15 22:38:20.879263] 127.0.0.1 => Access granted after TLS fingerprint match
+[2025-06-15 22:57:49.611033] 127.0.0.1 => Correct knock sequence
+[2025-06-15 22:57:52.766800] 127.0.0.1 => TLS FAILED - Fingerprint mismatch | SHA256: 77d47075db6cccc9ce9d65f7339093845ce25c5a772c1806fd2253c697a5d2d9
+[2025-06-15 22:57:52.947094] 127.0.0.1 => Access denied due to TLS fingerprint failure
+[2025-06-15 22:57:52.947892] 127.0.0.1 => Knock failed at port 52375 | Attempt 1
+[2025-06-15 22:59:38.046589] 127.0.0.1 => Correct knock sequence
+[2025-06-15 23:00:48.474477] 127.0.0.1 => Correct knock sequence
+[2025-06-15 23:00:51.865216] 127.0.0.1 => TLS SUCCESS - Client cert matched | SHA256: 77d47075db6cccc9ce9d65f7339093845ce25c5a772c1806fd2253c697a5d2d9
+[2025-06-15 23:00:52.105798] 127.0.0.1 => Access granted after TLS fingerprint match
+[2025-06-15 23:02:58.980651] 127.0.0.1 => Knock failed at port 52375 | Attempt 1
+[2025-06-15 23:02:58.982494] 127.0.0.1 => Knock failed at port 52375 | Attempt 2
+[2025-06-15 23:03:00.798167] 127.0.0.1 => Knock failed at port 52375 | Attempt 3
