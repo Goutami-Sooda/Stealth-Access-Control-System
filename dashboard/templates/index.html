@@ -1,28 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Stealth Access Dashboard</title>
+    <meta charset="UTF-8">
+    <title>Stealth Access Control System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2e003e; /* Ubuntu-like dark violet */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+            width: 80%;
+            text-align: center;
+        }
+
+        .flashes li {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .flashes li.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .flashes li.failure {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .form-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #9400d3;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #7a00b3;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            background-color: #3b0053;
+            border: 1px solid #5c008a;
+            margin: 0 0.5rem;
+            border-radius: 6px;
+        }
+
+        .tab.active {
+            background-color: #9400d3;
+        }
+
+        .log-section {
+            display: none;
+            width: 70vw;
+            padding: 1rem;
+            background-color: #1e0028;
+            border-radius: 6px;
+            white-space: pre-line;
+            overflow-x: auto;
+            font-size: 0.85rem; /* Smaller but still visible */
+            font-family: 'Courier New', Courier, monospace; /* Log-style monospaced font */
+            line-height: 1.4;
+        }
+
+
+        .log-section.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Stealth Access Logs</h1>
 
-    <form method="POST" action="/ban">
-        <input type="text" name="ip" placeholder="IP to Ban" required>
-        <button type="submit">Ban IP</button>
-    </form>
+    <header>
+        <h1>Welcome to Stealth Access Control System</h1>
+    </header>
 
-    <form method="POST" action="/unban">
-        <input type="text" name="ip" placeholder="IP to Unban" required>
-        <button type="submit">Unban IP</button>
-    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
-    <hr>
+    <div class="form-container">
+        <form method="POST" action="/ban">
+            <input type="text" name="ip" placeholder="IP to Ban" required>
+            <button type="submit">Ban IP</button>
+        </form>
 
-    <h2>Access Log</h2>
-    <pre>{{ access_logs|join('') }}</pre>
+        <form method="POST" action="/unban">
+            <input type="text" name="ip" placeholder="IP to Unban" required>
+            <button type="submit">Unban IP</button>
+        </form>
+    </div>
+    
+    <div class="form-container">
+        <form method="POST" action="/ban-port">
+            <input type="text" name="ip" placeholder="IP to Ban on Port" required>
+            <input type="text" name="port" placeholder="Port Number" required>
+            <button type="submit">Ban Port</button>
+        </form>
+    </div>
+    <div class="form-container">
+        <form method="POST" action="/unban-port">
+            <input type="text" name="ip" placeholder="IP to Unban on Port" required>
+            <input type="text" name="port" placeholder="Port Number" required>
+            <button type="submit">Unban Port</button>
+        </form>
+    </div>
 
-    <h2>Banned IPs</h2>
-    <pre>{{ banned_logs|join('') }}</pre>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('access')">Access Logs</div>
+        <div class="tab" onclick="showTab('banned')">Banned Logs</div>
+    </div>
+
+    <div id="access" class="log-section active">
+        {{ access_logs|join('') }}
+    </div>
+
+    <div id="banned" class="log-section">
+        {{ banned_logs|join('') }}
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.log-section').forEach(s => s.classList.remove('active'));
+            document.querySelector(`.tab[onclick="showTab('${tab}')"]`).classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
 
